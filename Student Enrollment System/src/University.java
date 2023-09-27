@@ -4,16 +4,17 @@ public class University implements IReport{
 
     public String name;
     public String location ;
-    List<String> Student=new ArrayList<String>();
-    List<String> Courses=new ArrayList<String>();
+    List<Student> addStudent=new ArrayList<Student>();
+    List<Courses> addCourses=new ArrayList<Courses>();
 
-    public String addStudent(){
+    public String addStudent(Student student){
 
-        return"j";
+        addStudent.add(student);
+        return addStudent.toString();
     }
-    public String addCourses(){
-
-        return null;
+    public String addCourses(Courses courses){
+         addCourses.add(courses);
+        return addCourses.toString();
     }
     public String  getAllCourses(){
 

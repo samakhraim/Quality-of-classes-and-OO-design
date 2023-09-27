@@ -2,10 +2,10 @@ public class StudentManagement {
 
     private String enrollStudent (){
 
-        return "j";
+        return null;
     }
-    private String dropStudent (){
-        return "j";
+    public String dropStudent (){
+        return null;
     }
 
 }

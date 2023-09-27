@@ -2,16 +2,19 @@ import java.util.ArrayList;
 import java.util.List;
 public class Courses {
 
-    public double courseCode;
-    public String title;
-    public String instructor;
-    public int maxCapacity;
+    private double courseCode;
+    private String title;
+    private String instructor;
+    private int maxCapacity;
     List<String> enrolledStudents=new ArrayList<String >();
 
-   private void updateCapacity(){
+    public void updateCapacity(){
 
 
     }
+    public String  getCoursesEnrollment(){
 
+        return null;
+    }
 
 }

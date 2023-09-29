@@ -1,1 +1,1 @@
-# Quality-of-classes-and-OO-design
+# Quality of classes and OO design

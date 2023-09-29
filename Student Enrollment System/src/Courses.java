@@ -8,14 +8,13 @@ public class Courses {
     private int maxCapacity;
     List<Student> enrolledStudents;
 
-    public Courses(int code,String title,String instructor){
+    public Courses(int code,String title,String instructor ,int maxCapacity){
         this.code=code;
         this.title=title;
         this.instructor=instructor;
-        this.enrolledStudents=new ArrayList<Student >();
-
+        this.enrolledStudents = new ArrayList<>();
+        this.maxCapacity =maxCapacity;
     }
-
     public String getTitle(){
         return title;
     }
@@ -29,20 +28,19 @@ public class Courses {
         this.maxCapacity=size;
     }
     public int getMaxCapacity(){
+
         return maxCapacity;
     }
-    public void updateCapacity(){
+    public void  updateCapacity(){
 
-
-    }
-    public void  setCourseEnrollment(Student student){
-        enrolledStudents.add(student);
+        maxCapacity++;
 
     }
-//each student in specific course
-    public String  getCourseEnrollment(){
 
-        return enrolledStudents.toString();
+
+    public List<Student> getCourseEnrollment(){
+
+        return enrolledStudents;
     }
     @Override
     public String toString(){

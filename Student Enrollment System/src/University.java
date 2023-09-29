@@ -2,26 +2,34 @@ import java.util.ArrayList;
 import java.util.List;
 public class University implements IReport{
 
-    public String name;
-    public String location ;
+    StudentManagement studentManagement = new StudentManagement();
     List<Student> addStudent=new ArrayList<Student>();
     List<Courses> addCourses=new ArrayList<Courses>();
-    public void addStudent(String name,String email,int id ){
 
-     Student newStudent=new Student(name,email,id);
-    }
-    public void addCourses(int code, String title, String instructor){
-       Courses newCourse=new Courses(code ,title ,instructor) ;
+    public void  addStudent(String name,String email,int id ){
 
-              addCourses.add(newCourse);
+        Student newStudent=new Student(name,email,id);
+        addStudent.add(newStudent);
 
     }
-    public String  getAllCourses(){
+    public void addCourses(int code, String title, String instructor,int maxCapacity){
 
-        return addCourses.toString();
+       Courses newCourse=new Courses(code ,title ,instructor,maxCapacity);
+       addCourses.add(newCourse);
+    }
+    public List<Student>  getAllStudents(){
+
+        return addStudent;
+    }
+    public List<Courses>  getAllCourses(){
+
+        return addCourses;
     }
 
     public String generateAllReports() {
+
         return null;
     }
+
+
 }

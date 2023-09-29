@@ -3,8 +3,8 @@ import java.util.List;
 public class University implements IReport{
 
     StudentManagement studentManagement = new StudentManagement();
-    Student student;
-    Courses courses = new Courses(0, "", "");;
+    Student student=new Student("","",0);
+    Courses courses = new Courses(0, "", "");
    private final List<Student> addStudent=new ArrayList<Student>();
    private final List<Courses> addCourses=new ArrayList<Courses>();
 

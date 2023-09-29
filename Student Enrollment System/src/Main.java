@@ -30,8 +30,23 @@ public class Main {
             System.out.println("\nStudent not found with ID: " + studentRetrieve);
         }
 
-        university.courses.getCourseEnrollment("Advance");
-
+        String Title = "Advance";
+        Courses searchedCourse = null;
+        for (Courses course : university.getAllCourses()) {
+            if (course.getTitle().equals(Title)) {
+                searchedCourse = course;
+                break;
+            }
+        }
+        if (searchedCourse != null) {
+            List<Student> enrolledStudents = searchedCourse.getEnrolledStudents(Title);
+            System.out.println("\nEnrolled students in course '" + Title+ "':");
+            for (Student student : enrolledStudents) {
+                System.out.println(student);
+            }
+        } else {
+            System.out.println("\nCourse not found: " + Title);
+        }
 
         List<Courses> courses = university.getAllCourses();
 
@@ -40,6 +55,7 @@ public class Main {
         for (Courses course : courses) {
             System.out.println(course.getTitle());
         }
+
     }
 
     private static void printResult(String label, String message) {

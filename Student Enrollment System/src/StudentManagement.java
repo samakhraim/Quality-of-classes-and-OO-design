@@ -21,7 +21,7 @@ public class StudentManagement {
         }
         if (studentToAdd != null && courseToAdd != null) {
 
-            if (courseToAdd.getMaxCapacity() >= courseToAdd.getCourseEnrollment(title).size()) {
+            if (courseToAdd.getMaxCapacity() >= courseToAdd.getCourseEnrollment().size()) {
 
                 studentToAdd.getStudentCourses().add(courseToAdd);
                 courseToAdd.enrolledStudents.add(studentToAdd);
@@ -58,7 +58,7 @@ public class StudentManagement {
 
         if (studentToRemove != null && courseToRemoveFrom != null) {
             studentToRemove.getStudentCourses().remove(courseToRemoveFrom);
-            boolean removed = courseToRemoveFrom.getCourseEnrollment(title).remove(studentToRemove);
+            boolean removed = courseToRemoveFrom.getCourseEnrollment().remove(studentToRemove);
             if (removed) {
                 courseToRemoveFrom.updateCapacity(false, 1);
 

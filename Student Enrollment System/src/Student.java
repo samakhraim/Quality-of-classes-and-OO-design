@@ -17,14 +17,6 @@ public class Student {
     public int getStudentId() {
         return id;
     }
-
-    public String getStudentName() {
-        return name;
-    }
-
-    public String getStudentEmail() {
-        return email;
-    }
     public static Student getStudentById(List<Student> students, int studentId) {
         for (Student student : students) {
             if (student.getStudentId() == studentId) {
@@ -35,13 +27,20 @@ public class Student {
     }
 
     public List<Courses> getStudentCourses() {
-
         System.out.println("Courses enrolled by student with ID " + id + ":");
         for (Courses course : studentCourses) {
             System.out.println("Course ID: " + course.getCourseCode() + ", Course Name: " + course.getTitle());
         }
         return studentCourses;
     }
+    public String getStudentName() {
+        return name;
+    }
+
+    public String getStudentEmail() {
+        return email;
+    }
+
     @Override
     public String toString() {
         return "ID: " + id + ", Name: " + name + ", Email: " + email;

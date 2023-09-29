@@ -46,15 +46,19 @@ public class Courses {
                 maxCapacity -= capacityChange;
             }
         }
-
-
-    public List<Student> getCourseEnrollment(String courseTitle) {
+    public List<Student> getEnrolledStudents(String courseTitle) {
+        List<Student> enrolledStudentsInCourse = new ArrayList<>();
         if (this.title.equals(courseTitle)) {
-            enrolledStudents.addAll(enrolledStudents);
+            enrolledStudentsInCourse.addAll(enrolledStudents);
         } else {
             System.out.println("Course not found: " + courseTitle);
         }
-        return enrolledStudents;
+        return enrolledStudentsInCourse;
+    }
+
+    public List<Student> getCourseEnrollment() {
+
+    return enrolledStudents;
     }
 
     @Override

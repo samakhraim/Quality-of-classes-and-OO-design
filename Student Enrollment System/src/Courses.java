@@ -1,48 +1,66 @@
 import java.util.ArrayList;
 import java.util.List;
+
 public class Courses {
 
     private final int code;
     private final String title;
-    private final  String instructor;
+    private final String instructor;
     private int maxCapacity;
-    List<Student> enrolledStudents;
+    List<Student> enrolledStudents = new ArrayList<>();;
 
-    public Courses(int code,String title,String instructor ,int maxCapacity){
-        this.code=code;
-        this.title=title;
-        this.instructor=instructor;
+    public Courses(int code, String title, String instructor) {
+        this.code = code;
+        this.title = title;
+        this.instructor = instructor;
         this.enrolledStudents = new ArrayList<>();
-        this.maxCapacity =maxCapacity;
+        this.maxCapacity = 0;
     }
-    public String getTitle(){
+
+
+    public String getTitle() {
         return title;
     }
-    public String getInstructor(){
+
+    public String getInstructor() {
         return instructor;
     }
-    public int getCourseCode(){
+
+    public int getCourseCode() {
         return code;
     }
-    public void setMaxCapacity(int size){
-        this.maxCapacity=size;
+    public void setMaxCapacity(int size) {
+        this.maxCapacity = size;
     }
-    public int getMaxCapacity(){
-
+    public int getMaxCapacity() {
         return maxCapacity;
     }
-    public void  updateCapacity(){
 
-        maxCapacity++;
+        public void updateCapacity(boolean isEnroll, int capacityChange) {
 
-    }
-    public List<Student> getCourseEnrollment(){
+            if (isEnroll) {
+                if (maxCapacity < enrolledStudents.size()) {
+                    maxCapacity += capacityChange;
+                }
+            } else {
+                maxCapacity -= capacityChange;
+            }
+        }
 
+
+    public List<Student> getCourseEnrollment(String courseTitle) {
+        if (this.title.equals(courseTitle)) {
+            enrolledStudents.addAll(enrolledStudents);
+        } else {
+            System.out.println("Course not found: " + courseTitle);
+        }
         return enrolledStudents;
     }
-    @Override
-    public String toString(){
-        return "Course ID: " + code + ", Course Name: " + title + ", Instructor: " + instructor ;
 
+    @Override
+    public String toString() {
+        return "Course ID: " + code + ", Course Name: " + title + ", Instructor: " + instructor;
     }
+
+
 }

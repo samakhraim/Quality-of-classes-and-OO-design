@@ -1,38 +1,48 @@
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
+
         University university = new University();
 
-        university.addCourses(7777, "Physics", "susu",50);
-        university.addCourses(11820, "Advance", "mustafa",20);
+        university.addCourses(7777, "Physics", "susu");
+        university.addCourses(11820, "Advance", "mustafa");
         university.addStudent("sama", "sama@gmail.com", 7777);
-        university.addStudent("yaman", "yaman@gmail.com", 7777);
+        university.addStudent("yaman", "yaman@gmail.com", 8888);
 
         String enrollResult = university.studentManagement.enrollStudent(university.getAllStudents(), university.getAllCourses(), 7777, "Physics");
-        printResult("Enroll Result", enrollResult);
+        enrollResult = university.studentManagement.enrollStudent(university.getAllStudents(), university.getAllCourses(), 7777, "Advance");
+        enrollResult = university.studentManagement.enrollStudent(university.getAllStudents(), university.getAllCourses(), 8888, "Advance");
+        printResult("Enrollment Result \n", enrollResult);
+        printResult("\nEnrollment Result ", enrollResult);
+        printResult("\nEnrollment Result ", enrollResult);
 
-       printCourseEnrollments(university);
+        // String dropResult = university.studentManagement.dropStudent(university.getAllStudents(), university.getAllCourses(), 7777, "Physics");
+        // printResult("Drop Result", dropResult);
 
-       String dropResult = university.studentManagement.dropStudent(university.getAllStudents(), university.getAllCourses(), 7777, "Physics");
-        printResult("Drop Result", dropResult);
+        int studentRetrieve = 7777;
+        Student retrievedStudent = university.student.getStudentById(university.getAllStudents(), studentRetrieve);
+        if (retrievedStudent != null) {
+            System.out.println("\nRetrieved student details:");
+            System.out.println(retrievedStudent);
+            retrievedStudent.getStudentCourses();
+        } else {
+            System.out.println("\nStudent not found with ID: " + studentRetrieve);
+        }
 
-        printCourseEnrollments(university);
-    }
+        university.courses.getCourseEnrollment("Advance");
 
-    private static void printCourseEnrollments(University university) {
-        for (Courses c : university.getAllCourses()) {
-            if (!c.getCourseEnrollment().isEmpty()) {
-                System.out.println("Course: " + c.getTitle());
-                System.out.println("Maximum Capacity: " + c.getMaxCapacity());
-                System.out.println("Enrolled Students:");
-                for (Student s : c.getCourseEnrollment()) {
-                    System.out.println("Student ID: " + s.getStudentId() + ", Student Name: " + s.getStudentName());
-                }
-                System.out.println() ;
-            }
+
+        List<Courses> courses = university.getAllCourses();
+
+        System.out.println("\n\nAvailable Course Titles:");
+
+        for (Courses course : courses) {
+            System.out.println(course.getTitle());
         }
     }
 
     private static void printResult(String label, String message) {
-        System.out.println(label + ": " + message);
+        System.out.println(label + "   " + message);
     }
 }

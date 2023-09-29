@@ -2,7 +2,8 @@ import java.util.List;
 
 public class StudentManagement {
 
-    public String enrollStudent(List<Student> addStudent, List<Courses> addCourses, double id, String title) {
+    public String enrollStudent(List<Student> addStudent, List<Courses> addCourses, int id, String title) {
+
         Student studentToAdd = null;
         Courses courseToAdd = null;
 
@@ -12,19 +13,22 @@ public class StudentManagement {
                 break;
             }
         }
-
         for (Courses c : addCourses) {
             if (c.getTitle().equals(title)) {
                 courseToAdd = c;
                 break;
             }
         }
-
         if (studentToAdd != null && courseToAdd != null) {
-            if (courseToAdd.getMaxCapacity() > courseToAdd.getCourseEnrollment().size()) {
+
+            if (courseToAdd.getMaxCapacity() >= courseToAdd.getCourseEnrollment(title).size()) {
+
                 studentToAdd.getStudentCourses().add(courseToAdd);
                 courseToAdd.enrolledStudents.add(studentToAdd);
-                courseToAdd.updateCapacity();
+                courseToAdd.updateCapacity(true, 1);
+
+                System.out.println("Capacity of course " + courseToAdd.getTitle() + " updated to: " + courseToAdd.getMaxCapacity());
+
                 return "Student enrolled successfully to the course";
             } else {
                 return "Course is already at maximum capacity, enrollment failed";
@@ -34,7 +38,7 @@ public class StudentManagement {
         }
     }
 
-    public String dropStudent(List<Student> students, List<Courses> courses, double id, String title) {
+    public String dropStudent(List<Student> students, List<Courses> courses, int id, String title) {
         Student studentToRemove = null;
         Courses courseToRemoveFrom = null;
 
@@ -54,9 +58,13 @@ public class StudentManagement {
 
         if (studentToRemove != null && courseToRemoveFrom != null) {
             studentToRemove.getStudentCourses().remove(courseToRemoveFrom);
-            boolean removed = courseToRemoveFrom.getCourseEnrollment().remove(studentToRemove);
+            boolean removed = courseToRemoveFrom.getCourseEnrollment(title).remove(studentToRemove);
             if (removed) {
-                courseToRemoveFrom.updateCapacity(); // Decrement capacity when a student is removed
+                courseToRemoveFrom.updateCapacity(false, 1);
+
+                // Print capacity update
+                System.out.println("Capacity of course " + courseToRemoveFrom.getTitle() + " updated to: " + courseToRemoveFrom.getMaxCapacity());
+
                 return "Student dropped successfully";
             } else {
                 return "Student was not enrolled in the course";

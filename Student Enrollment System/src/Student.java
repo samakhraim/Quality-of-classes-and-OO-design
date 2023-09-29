@@ -28,6 +28,7 @@ public class Student {
         studentCourses.add(courses);
 
     }
+    //print all courses for single student or specific
     public String  getStudentCourses(){
 
         return studentCourses.toString();

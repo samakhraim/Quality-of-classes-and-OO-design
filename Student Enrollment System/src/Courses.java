@@ -5,7 +5,7 @@ public class Courses {
     private final int code;
     private final String title;
     private final  String instructor;
-    private  int maxCapacity;
+    private int maxCapacity;
     List<Student> enrolledStudents;
 
     public Courses(int code,String title,String instructor){
@@ -13,6 +13,7 @@ public class Courses {
         this.title=title;
         this.instructor=instructor;
         this.enrolledStudents=new ArrayList<Student >();
+
     }
 
     public String getTitle(){
@@ -24,6 +25,12 @@ public class Courses {
     public int getCourseCode(){
         return code;
     }
+    public void setMaxCapacity(int size){
+        this.maxCapacity=size;
+    }
+    public int getMaxCapacity(){
+        return maxCapacity;
+    }
     public void updateCapacity(){
 
 
@@ -32,7 +39,7 @@ public class Courses {
         enrolledStudents.add(student);
 
     }
-
+//each student in specific course
     public String  getCourseEnrollment(){
 
         return enrolledStudents.toString();

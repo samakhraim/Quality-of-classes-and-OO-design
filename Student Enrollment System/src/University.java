@@ -6,19 +6,19 @@ public class University implements IReport{
     public String location ;
     List<Student> addStudent=new ArrayList<Student>();
     List<Courses> addCourses=new ArrayList<Courses>();
+    public void addStudent(String name,String email,int id ){
 
-    public String addStudent(Student student){
-
-        addStudent.add(student);
-        return addStudent.toString();
+     Student newStudent=new Student(name,email,id);
     }
-    public String addCourses(Courses courses){
-         addCourses.add(courses);
-        return addCourses.toString();
+    public void addCourses(int code, String title, String instructor){
+       Courses newCourse=new Courses(code ,title ,instructor) ;
+
+              addCourses.add(newCourse);
+
     }
     public String  getAllCourses(){
 
-        return null;
+        return addCourses.toString();
     }
 
     public String generateAllReports() {

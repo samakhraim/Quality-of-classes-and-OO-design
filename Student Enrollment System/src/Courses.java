@@ -36,8 +36,6 @@ public class Courses {
         maxCapacity++;
 
     }
-
-
     public List<Student> getCourseEnrollment(){
 
         return enrolledStudents;

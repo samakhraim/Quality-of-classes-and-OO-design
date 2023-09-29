@@ -10,17 +10,14 @@ public class Main {
         String enrollResult = university.studentManagement.enrollStudent(university.getAllStudents(), university.getAllCourses(), 7777, "Physics");
         printResult("Enroll Result", enrollResult);
 
-        // Print the initial course enrollments
        printCourseEnrollments(university);
 
        String dropResult = university.studentManagement.dropStudent(university.getAllStudents(), university.getAllCourses(), 7777, "Physics");
         printResult("Drop Result", dropResult);
 
-        // Print the updated course enrollments
         printCourseEnrollments(university);
     }
 
-    // Method to print course enrollments
     private static void printCourseEnrollments(University university) {
         for (Courses c : university.getAllCourses()) {
             if (!c.getCourseEnrollment().isEmpty()) {
@@ -30,12 +27,11 @@ public class Main {
                 for (Student s : c.getCourseEnrollment()) {
                     System.out.println("Student ID: " + s.getStudentId() + ", Student Name: " + s.getStudentName());
                 }
-                System.out.println() ; // Add a separator line between courses
+                System.out.println() ;
             }
         }
     }
 
-    // Method to print a result message
     private static void printResult(String label, String message) {
         System.out.println(label + ": " + message);
     }
